@@ -1,5 +1,7 @@
 # magentic
 
+[English](README.md) | [Français](README.fr.md)
+
 Seamlessly integrate Large Language Models into Python code. Use the `@prompt` and `@chatprompt` decorators to create functions that return structured output from an LLM. Combine LLM queries and tool use with traditional Python code to build complex agentic systems.
 
 ## Features
