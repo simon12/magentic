@@ -16,6 +16,7 @@ dependencies = [
 [project.optional-dependencies]
 anthropic = ["anthropic>=0.41.0"]
 litellm = ["litellm>=1.41.12"]
+sentry = ["sentry-sdk>=1.40.0"]
 
 [build-system]
 requires = ["hatchling"]
