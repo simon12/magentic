@@ -140,7 +140,9 @@ class DocumentBytes(RootModel[bytes]):
     @cached_property
     def mime_type(self) -> DocumentMimeType:
         mimetype: str | None = filetype.guess_mime(self.root)
-        assert mimetype in _DOCUMENT_MIME_TYPES
+        if mimetype not in _DOCUMENT_MIME_TYPES:
+            msg = f"Unsupported document MIME type: {mimetype!r}"
+            raise ValueError(msg)
         return cast(DocumentMimeType, mimetype)
 
     def __init__(self, root: bytes, **data: Any):
@@ -174,7 +176,9 @@ class ImageBytes(RootModel[bytes]):
     @cached_property
     def mime_type(self) -> ImageMimeType:
         mimetype: str | None = filetype.guess_mime(self.root)
-        assert mimetype in _IMAGE_MIME_TYPES
+        if mimetype not in _IMAGE_MIME_TYPES:
+            msg = f"Unsupported image MIME type: {mimetype!r}"
+            raise ValueError(msg)
         return cast(ImageMimeType, mimetype)
 
     def as_base64(self) -> str:
